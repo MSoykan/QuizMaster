@@ -15,6 +15,7 @@ public class Quiz : MonoBehaviour
     [Header("Answers")]
     [SerializeField] GameObject[] answerButtons;
     int correctAnswerIndex;
+    bool hasAnsweredEarly;
 
     [Header("Button Colors")]
     [SerializeField] Sprite defaultAnswerSprite;
@@ -35,10 +36,38 @@ public class Quiz : MonoBehaviour
     void Update()
     {
         timerImage.fillAmount = timer.fillFraction;
+        if (timer.loadNextQuestion)
+        {
+            hasAnsweredEarly = false;
+            GetNextQuestion();
+            timer.loadNextQuestion = false;
+        }
+        else if (!hasAnsweredEarly && !timer.isAnsweringQuestions)
+        {
+            DisplayAnswer(-1);
+            setButtonState(false);
+        }
     }
 
 
     public void OnAnswerSelected(int index)
+    {
+        DisplayAnswer(index);
+        setButtonState(false);
+        timer.CancelTimer();
+    }
+
+    void setButtonState(bool state)
+    {
+
+        for (int i = 0; i < answerButtons.Length; i++)
+        {
+            Button button = answerButtons[i].GetComponent<Button>();
+            button.interactable = state;
+        }
+    }
+
+    void DisplayAnswer(int index)
     {
         if (index == question.GetCorrectAnswerIndex())
         {
@@ -53,16 +82,6 @@ public class Quiz : MonoBehaviour
             Image buttonImage = answerButtons[index].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
         }
-        setButtonState(false);
-    }
-
-    void setButtonState(bool state)
-    {
-        for (int i = 0; i < answerButtons.Length; i++)
-        {
-            Button button = answerButtons[i].GetComponent<Button>();
-            button.interactable = state;
-        }
     }
 
     void GetNextQuestion()
@@ -74,10 +93,10 @@ public class Quiz : MonoBehaviour
 
     private void SetDefaultButtonSprites()
     {
-        for ( int i = 0; i< answerButtons.Length; i++)
+        for (int i = 0; i < answerButtons.Length; i++)
         {
             Image buttonImage = answerButtons[i].GetComponent<Image>();
-            buttonImage.sprite = defaultAnswerSprite ;
+            buttonImage.sprite = defaultAnswerSprite;
         }
     }
 
