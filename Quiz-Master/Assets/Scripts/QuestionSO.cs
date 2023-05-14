@@ -21,7 +21,7 @@ public class QuestionSO : ScriptableObject
     }
 
     public string GetAnswer(int index){
-        return answers[index];
+            return answers[index];
     }   
 
 }
