@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9076075d2a8425c42a73f4da80e943ce, type: 3}
   m_Name: Question 2
   m_EditorClassIdentifier: 
-  question: Enter new question text here
+  question: "2023 cb se\xE7imi kim al\u0131r?\t"
   answers:
-  - 1
-  - 2
-  - 3
-  - 4
+  - KK
+  - RTE
+  - Oan
+  - "\u0130nce"
   correctAnswerIndex: 0
