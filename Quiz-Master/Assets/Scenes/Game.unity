@@ -700,8 +700,8 @@ MonoBehaviour:
   - {fileID: 1999304286}
   - {fileID: 1491193595}
   - {fileID: 1221750881}
-  defaultAnswerSprite: {fileID: 0}
-  correctAnswerSprite: {fileID: 0}
+  defaultAnswerSprite: {fileID: 21300000, guid: 5561ff765fc9e7642b6e1be957dbc7a5, type: 3}
+  correctAnswerSprite: {fileID: 21300000, guid: 3fa5c2d70fec9bb4eb14678df59ab92c, type: 3}
 --- !u!1 &1075202948
 GameObject:
   m_ObjectHideFlags: 0
