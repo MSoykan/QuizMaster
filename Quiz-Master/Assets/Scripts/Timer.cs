@@ -11,6 +11,7 @@ public class Timer : MonoBehaviour
     public bool loadNextQuestion;
     public bool isAnsweringQuestions = false;
     public float fillFraction;
+
     void Update()
     {
         UpdateTimer();
